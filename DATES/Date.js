@@ -1,4 +1,4 @@
-exports._localDate = (date) => {
+const _localDate = (date) => {
   //Conversion du timestamp en milliseconds
   var myDate = new Date(date),
     jour = function () {
@@ -23,7 +23,7 @@ exports._localDate = (date) => {
   return myDate.getFullYear() + "-" + mois() + "-" + jour();
 };
 
-exports._localdateTime = (date) => {
+const _localdateTime = (date) => {
   //Conversion du timestamp en milliseconds
   var myDate = new Date(date),
     jour = function () {
@@ -101,3 +101,5 @@ exports._localdateTime = (date) => {
     "'"
   );
 };
+
+export { _localDate, _localdateTime };

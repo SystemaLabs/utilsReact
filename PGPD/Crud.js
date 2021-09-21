@@ -1,8 +1,9 @@
 import axios from "axios";
-const { _api } = require("../CONFIGS/api");
+import { _notEmpty } from "../CONFIGS/api";
+import { _api, _getStore } from("../CONFIGS/api");
 
-exports._delete = (url, callback) => {
-  var token = getStore() && getStore().token ? getStore().token : null;
+const _delete = (url, callback) => {
+  var token = _getStore() && _getStore().token ? _getStore().token : null;
   var config = {
     headers: {
       Authorization: "Bearer " + token,
@@ -21,10 +22,10 @@ exports._delete = (url, callback) => {
       callback(false, "Une erreur technique est survenue, reessayer plus tard");
     }
   );
-};
+}
 
-exports._get = (url, callback) => {
-  var { token } = getStore();
+const _get = (url, callback) => {
+  var { token } = _getStore();
   var config = {
     headers: {
       Authorization: token ? "Bearer " + token : null,
@@ -43,11 +44,11 @@ exports._get = (url, callback) => {
       callback(false, "Une erreur technique est survenue, reessayer plus tard");
     }
   );
-};
+}
 
-exports._post = (url, datas, callback) => {
-  if (notEmpty(datas)) {
-    var token = getStore() && getStore().token ? getStore().token : null;
+const _post = (url, datas, callback) => {
+  if (_notEmpty(datas)) {
+    var token = _getStore() && _getStore().token ? _getStore().token : null;
     var config = {
       headers: {
         Authorization: "Bearer " + token,
@@ -72,11 +73,11 @@ exports._post = (url, datas, callback) => {
   } else {
     callback(false, "Veuillez renseigner toutes les informations");
   }
-};
+}
 
-exports._put = (url, datas, callback) => {
-  if (notEmpty(datas)) {
-    var token = getStore() && getStore().token ? getStore().token : null;
+const _put = (url, datas, callback) => {
+  if (_notEmpty(datas)) {
+    var token = _getStore() && _getStore().token ? _getStore().token : null;
     var config = {
       headers: {
         Authorization: "Bearer " + token,
@@ -101,4 +102,6 @@ exports._put = (url, datas, callback) => {
   } else {
     callback(false, "Veuillez renseigner toutes les informations");
   }
-};
+}
+
+export { _delete, _post, _put, _get };

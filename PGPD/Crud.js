@@ -7,7 +7,7 @@ import { _api, _getStore } from("../CONFIGS/api");
  * TOUTES LES OPERATIONS CRUD
  */
 
-const CRUD = (type = null, url = null, datas=null, callback = null) => {
+export const _CRUD = (type = null, url = null, datas=null, callback = null) => {
   switch (type) {
 
     case type == "post":
@@ -116,7 +116,3 @@ const CRUD = (type = null, url = null, datas=null, callback = null) => {
         return null;
   }
 }
-
-
-
-export { CRUD };

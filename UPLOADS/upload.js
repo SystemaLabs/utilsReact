@@ -1,4 +1,4 @@
-const _upload = (file, callback) => {
+export const _upload = (file, callback) => {
   var allowedTypes = ["png", "jpg", "jpeg", "svg", "tif"],
     imgType;
 
@@ -37,5 +37,3 @@ const _upload = (file, callback) => {
     }
   }
 };
-
-export { _upload };

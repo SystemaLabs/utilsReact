@@ -1,19 +1,19 @@
-import Cookies from "js-cookie";
-
 /*************************************
  *      Renvoi l'url de l'api         *
  **************************************/
 
-function _api() {
+export const _api = () => {
   return "https://api-garagekin.herokuapp.com";
-}
+};
 
 /**
  * Renvoi les informations stockées dans le store
  * @returns
  */
-const _getStore = () => {
-  var datas = Cookies.get("auth") ? JSON.parse(Cookies.get("auth")) : null;
+export const _getStore = () => {
+  var datas = localStorage.get("auth")
+    ? JSON.parse(localStorage.get("auth"))
+    : null;
   return datas;
 };
 
@@ -22,7 +22,7 @@ const _getStore = () => {
  * @param {*} object
  * @returns
  */
-const _notEmpty = (object) => {
+export const _notEmpty = (object) => {
   let flag = false;
 
   for (const value in object) {
@@ -49,20 +49,20 @@ const _getRule = () => {
   return rule;
 };
 
-const _uStore = (item, newDatas) => {
-  var datas = Cookies.get("auth") ? JSON.parse(Cookies.get("auth")) : null;
+export const _uStore = (item, newDatas) => {
+  var datas = localStorage.get("auth")
+    ? JSON.parse(localStorage.get("auth"))
+    : null;
   datas[item] = newDatas;
-  Cookies.set("auth", datas);
+  localStorage.set("auth", datas);
 };
 
-const _lout = (e) => {
+export const _lout = (e) => {
   e.preventDefault();
-  Cookies.remove("auth");
-  if (!Cookies.get("auth")) {
+  localStorage.removeItem("auth");
+  if (!localStorage.get("auth")) {
     window.location.assign("/");
   } else {
-    Cookies.remove("auth");
+    localStorage.removeItem("auth");
   }
 };
-
-export { _api, _getStore, _uStore, _lout, _getRule, _notEmpty };

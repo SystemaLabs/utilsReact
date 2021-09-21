@@ -17,13 +17,11 @@ const _getStore = () => {
   return datas;
 };
 
-/**        
-
+/**
  * Verifie si un objet n'est pas vide
- * @param {*} object 
- * @returns 
+ * @param {*} object
+ * @returns
  */
-
 const _notEmpty = (object) => {
   let flag = false;
 

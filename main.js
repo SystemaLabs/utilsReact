@@ -13,18 +13,18 @@ import { _lout, _uStore } from "./CONFIGS/api";
  * @param {*} payload données
  * @param {*} callback la reponse
  */
-function postRequest(url, datas, callback) {
+const postRequest = (url, datas, callback) => {
   return _post(url, datas, callback);
-}
+};
 
 /**
  * Recuperation des données
  * @param {*} url adresse
  * @param {*} callback la reponse
  */
-function getRequest(url, callback) {
+const getRequest = (url, callback) => {
   return _get(url, callback);
-}
+};
 
 /**
  * Pour l'edition d'une requete
@@ -32,35 +32,35 @@ function getRequest(url, callback) {
  * @param {*} datas données
  * @param {*} callback la reponse
  */
-function putRequest(url, datas, callback) {
+const putRequest = (url, datas, callback) => {
   return _put(url, datas, callback);
-}
+};
 
 /**
  * Pour Suppression
  * @param {*} url adresse
  * @param {*} callback la reponse
  */
-function deleteRequest(url, callback) {
+const deleteRequest = (url, callback) => {
   return _delete(url, datas, callback);
-}
+};
 
 /**
  * Permet de faire l'upload des fichiers
  * @param {*} files
  */
-function upload(files, callback) {
+const upload = (files, callback) => {
   return _upload(files, callback);
-}
+};
 
 /**
  * Met à jour les informations du store
  * @param {*} item L'element a modifier
  * @param {*} newDatas Les nouvelles entrées
  */
-function updateStore(item, newDatas) {
+const updateStore = (item, newDatas) => {
   _uStore(item, newDatas);
-}
+};
 
 /**
  * Fonction permettant de deconncter un user

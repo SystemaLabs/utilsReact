@@ -1,48 +1,18 @@
 import { _upload } from "./UPLOADS/upload";
-import { _delete, _get, _post, _put } from "./PGPD/Crud";
 import { _localDate, _localdateTime } from "./DATES/Date";
 import { _lout, _uStore } from "./CONFIGS/api";
-
-/************************************************************************************                                                                                  *
- *                                     CRUD                                         *
- ************************************************************************************/
+import { CRUD } from "./PGPD/Crud";
 
 /**
- * Post les données
- * @param {*} url adresse
- * @param {*} payload données
- * @param {*} callback la reponse
+ *
+ * @param {*} type d'operation http a effectuer
+ * @param {*} url url a soumettre
+ * @param {*} datas donnees a envoyer
+ * @param {*} callback la fonction a executer
+ * @returns
  */
-const postRequest = (url, datas, callback) => {
-  return _post(url, datas, callback);
-};
-
-/**
- * Recuperation des données
- * @param {*} url adresse
- * @param {*} callback la reponse
- */
-const getRequest = (url, callback) => {
-  return _get(url, callback);
-};
-
-/**
- * Pour l'edition d'une requete
- * @param {*} url adresse
- * @param {*} datas données
- * @param {*} callback la reponse
- */
-const putRequest = (url, datas, callback) => {
-  return _put(url, datas, callback);
-};
-
-/**
- * Pour Suppression
- * @param {*} url adresse
- * @param {*} callback la reponse
- */
-const deleteRequest = (url, callback) => {
-  return _delete(url, datas, callback);
+const _request = (type, url, datas, callback) => {
+  return CRUD(type, url, datas, callback);
 };
 
 /**
@@ -70,24 +40,27 @@ const logout = (e) => {
   return _lout(e);
 };
 
-/**************************************************
- *               Dates et Heures                  *
- **************************************************/
-
+/**
+ *
+ * @param {*} date la date a formater
+ * @returns format local renvoyer
+ */
 const convertNormalDate = (date) => {
   return _localDate(date);
 };
 
-const convertDate = (date) => {
+/**
+ *
+ * @param {*} date date a formater et l'heure
+ * @returns le format a renvoyer pour avoire l'heure
+ */
+const convertDateTime = (date) => {
   return _localdateTime(date);
 };
 
 export {
-  postRequest,
-  convertDate,
-  deleteRequest,
-  getRequest,
-  putRequest,
+  _request,
+  convertDateTime,
   updateStore,
   logout,
   upload,
